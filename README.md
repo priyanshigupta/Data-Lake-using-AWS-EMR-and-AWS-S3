@@ -1,4 +1,4 @@
-# Data Lake using AWS EMR 
+# Data Lake using AWS EMR and AWS S3
 
 This project aims to develop a data lake for a company with growing data by making use of AWS ElasticMapReduce(EMR) service with Hadoop and Spark. 
 
