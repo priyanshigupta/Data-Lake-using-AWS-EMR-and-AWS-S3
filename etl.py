@@ -9,10 +9,11 @@ from pyspark.sql.types import TimestampType, DateType
 config = configparser.ConfigParser()
 config.read('dl.cfg')
 
+#Giving IAM role key and Password
 os.environ['AWS_ACCESS_KEY_ID']=config.get('AWS','AWS_ACCESS_KEY_ID')
 os.environ['AWS_SECRET_ACCESS_KEY']=config.get('AWS','AWS_SECRET_ACCESS_KEY')
 
-
+#Creating a Spark Session
 def create_spark_session():
     spark = SparkSession \
         .builder \
@@ -22,6 +23,9 @@ def create_spark_session():
 
 
 def process_song_data(spark, input_data, output_data):
+    """ Load song data from S3, transform the data
+    and write it as partitioned parquet file
+    """
     # get filepath to song data file
     song_data =input_data+ 'song_data/A/A/A/TRAAAAK128F9318786.json'#'song_data/*/*/*/*.json' 
     
@@ -70,6 +74,9 @@ def process_song_data(spark, input_data, output_data):
 
 
 def process_log_data(spark, input_data, output_data):
+     """ Load events data from S3, transform the data
+    and write it as partitioned parquet file
+    """
     # get filepath to log data file
     log_data =input_data+ 'log_data/2018/11/2018-11-13-events.json'#'log_data/2018/11/*.json' 
 
